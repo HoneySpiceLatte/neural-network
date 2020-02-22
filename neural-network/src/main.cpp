@@ -2,6 +2,8 @@
 #include <chrono>
 #include <thread>
 
+using namespace std;
+
 static bool isRunning = false;
 
 void init() {
@@ -31,6 +33,6 @@ int main() {
 		update();
 		draw();
 
-		std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::seconds(1));
+		this_thread::sleep_until(chrono::system_clock::now() + chrono::seconds(1));
 	}
 }
