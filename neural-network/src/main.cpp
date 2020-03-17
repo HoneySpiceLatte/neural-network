@@ -43,6 +43,6 @@ int main() {
 		std::chrono::duration<double> elapsed = std::chrono::system_clock::now() - start;
 		double delay = ( 1000 / FPS ) - std::chrono::duration<double>( elapsed ).count();
 
-		std::this_thread::sleep_for( std::chrono::milliseconds( (long long)delay ) );
+		std::this_thread::sleep_for( std::chrono::milliseconds( (long long) delay ) );
 	}
 }
