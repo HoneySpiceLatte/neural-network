@@ -1,48 +1,32 @@
 #include <iostream>
-#include <chrono>
-#include <thread>
 
-static bool isRunning = false;
+#include <SDL.h>
 
-const int FPS = 5;
+const int WIDTH = 800;
+const int HEIGHT = 600;
 
-// Macros
-template <typename T>
-auto seconds_to_duration(T seconds) {
-	return std::chrono::duration<T, std::ratio<1>>(seconds);
-}
+int main(int argc, char* argv[]) {
+	
+	if ( SDL_Init(SDL_INIT_EVERYTHING) < 0 )
+		std::cout << "SDL failed to initialize! SDL Error: " << SDL_GetError() << std::endl;
 
-void init() {
-	isRunning = true;
-}
+	SDL_Window* window = SDL_CreateWindow(
+		"Application", // Window Title
+		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, // Window Pos
+		WIDTH, HEIGHT, // Window Size
+		SDL_WINDOW_ALLOW_HIGHDPI // Flags
+	);
 
-void input() {
+	if (window == NULL)
+		std::cout << "Window failed to create: " << SDL_GetError() << std::endl;
 
-}
+	SDL_Event windowEvent;
 
-void update() {
+	while (true) {
+		if ( SDL_PollEvent(&windowEvent) ) {
 
-}
-
-void render() {
-	std::cout << "Cyka" << std::endl;
-}
-
-int main() {
-
-	init();
-
-	while (isRunning) {
-
-		auto start = std::chrono::system_clock::now();
-
-		input();
-		update();
-		render();
-
-		std::chrono::duration<double> elapsed = std::chrono::system_clock::now() - start;
-		double delay = ( 1000 / FPS ) - std::chrono::duration<double>( elapsed ).count();
-
-		std::this_thread::sleep_for( std::chrono::milliseconds( (long long) delay ) );
+		}
 	}
+
+	return EXIT_SUCCESS;
 }
