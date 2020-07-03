@@ -1,0 +1,8 @@
+# Visual Studio generated .clang-format file
+
+BasedOnStyle: WebKit
+IndentWidth: 4
+
+AccessModifierOffset: 0
+
+AlignAfterOpenBracket: AlwaysBreak
